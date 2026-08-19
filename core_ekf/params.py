@@ -21,7 +21,7 @@ picked independently. Because several of these equations amplify small
 coefficient errors by large factors (e.g. R_gas*T3/V3 ~ 1e8), picking them
 independently left the nominal point far from equilibrium and made Euler
 propagation diverge over tens of cycles; solving them jointly keeps x0 a
-genuine (numerically exact) fixed point of f(x0, u0).
+genuine fixed point of f(x0, u0).
 """
 
 import numpy as np
