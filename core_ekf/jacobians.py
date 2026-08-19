@@ -53,7 +53,7 @@ def jacobian_H_loop(x, eps=1e-6):
 
 
 def jacobian_F_vec(x, u, eps=1e-6):
-    """df/dx via vectorized central differences (no Python loop). Returns (6, 6)."""
+    """df/dx via vectorized central differences. Returns (6, 6)."""
     x = np.asarray(x, dtype=float)
     n = x.shape[-1]
     pert = eps * np.eye(n)
@@ -68,7 +68,7 @@ def jacobian_F_vec(x, u, eps=1e-6):
 
 
 def jacobian_H_vec(x, eps=1e-6):
-    """dh/dx via vectorized central differences (no Python loop). Returns (16, 6)."""
+    """dh/dx via vectorized central differences. Returns (16, 6)."""
     x = np.asarray(x, dtype=float)
     n = x.shape[-1]
     pert = eps * np.eye(n)
