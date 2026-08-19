@@ -49,3 +49,37 @@ Evaluated over 1,000 continuous predict-update cycles on standard x86-64 hardwar
 
 ```powershell
 pip install numpy pytest
+```
+
+### 2. Run Test Suite
+```powershell
+python -m pytest tests/test_ekf.py -v
+```
+
+### 3. Run Benchmark
+```powershell
+python benchmark.py
+```
+
+---
+
+## Project Structure
+
+```text
+mgt_ekf_project/
+├── core_ekf/
+│   ├── __init__.py
+│   ├── ekf.py             # EKF filter class (predict/update)
+│   ├── jacobians.py       # Loop vs vectorized Jacobian calculations
+│   ├── params.py          # Physical constants & thermodynamic equilibria
+│   └── state_space.py     # Continuous dynamics f(x, u) and measurement h(x)
+├── tests/
+│   ├── __init__.py
+│   └── test_ekf.py        # 16 unit tests for physics, shapes, and stability
+├── utils/
+│   ├── __init__.py
+│   └── validation.py      # State boundary and covariance assertions
+├── benchmark.py           # 1,000-cycle latency comparison script
+├── .gitignore
+└── README.md
+```
