@@ -1,5 +1,10 @@
-﻿__pycache__/
+__pycache__/
 *.py[cod]
-*.class
-.pytest_cache/
-.claude/
+*.nbc
+*.nbi
+.venv/
+venv/
+# Keep engine calibration and recorded sensor data local unless intentionally shared.
+engine_config.json
+measurements.csv
+estimates.csv

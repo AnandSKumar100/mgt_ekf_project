@@ -1,0 +1,396 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "thrust_convention": {
+      "enum": [
+        "momentum",
+        "pressure"
+      ]
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "J": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "V3": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "V5": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "tau_m": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "tau_b": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "mdot_ref": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "Tref": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "Pref": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "pi_in": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "delta_b": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 1
+        },
+        "eta_b": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "eta_m": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "Wacc": {
+          "type": "number",
+          "minimum": 0
+        },
+        "LHV": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "An": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "Cd": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "Ra": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "Rg": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "epsilon_pi": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "J",
+        "V3",
+        "V5",
+        "tau_m",
+        "tau_b",
+        "mdot_ref",
+        "Tref",
+        "Pref",
+        "pi_in",
+        "delta_b",
+        "eta_b",
+        "eta_m",
+        "Wacc",
+        "LHV",
+        "An",
+        "Cd",
+        "Ra",
+        "Rg",
+        "epsilon_pi"
+      ],
+      "additionalProperties": false
+    },
+    "maps": {
+      "type": "object",
+      "properties": {
+        "compressor": {
+          "type": "object",
+          "properties": {
+            "speed": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2
+            },
+            "flow": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2
+            },
+            "pressure_ratio": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2
+              },
+              "minItems": 2
+            },
+            "efficiency": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2
+              },
+              "minItems": 2
+            }
+          },
+          "required": [
+            "speed",
+            "flow",
+            "pressure_ratio",
+            "efficiency"
+          ],
+          "additionalProperties": false
+        },
+        "turbine": {
+          "type": "object",
+          "properties": {
+            "speed": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2
+            },
+            "expansion_ratio": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2
+            },
+            "flow": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2
+              },
+              "minItems": 2
+            },
+            "efficiency": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2
+              },
+              "minItems": 2
+            }
+          },
+          "required": [
+            "speed",
+            "expansion_ratio",
+            "flow",
+            "efficiency"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "compressor",
+        "turbine"
+      ],
+      "additionalProperties": false
+    },
+    "gas_properties": {
+      "type": "object",
+      "properties": {
+        "air": {
+          "type": "object",
+          "properties": {
+            "temperature": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2
+            },
+            "cp": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2
+            }
+          },
+          "required": [
+            "temperature",
+            "cp"
+          ],
+          "additionalProperties": false
+        },
+        "gas": {
+          "type": "object",
+          "properties": {
+            "temperature": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2
+            },
+            "cp": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2
+            }
+          },
+          "required": [
+            "temperature",
+            "cp"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "air",
+        "gas"
+      ],
+      "additionalProperties": false
+    },
+    "filter": {
+      "type": "object",
+      "properties": {
+        "initial_state": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "state_scale": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "initial_covariance": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 5,
+            "maxItems": 5
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "Qc": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 5,
+            "maxItems": 5
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "R": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 8,
+            "maxItems": 8
+          },
+          "minItems": 8,
+          "maxItems": 8
+        },
+        "max_step_s": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_substeps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "fd_relative": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "fd_absolute": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "sigma_gate": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "nis_probability": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 1
+        }
+      },
+      "required": [
+        "initial_state",
+        "state_scale",
+        "initial_covariance",
+        "Qc",
+        "R",
+        "max_step_s"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "thrust_convention",
+    "parameters",
+    "maps",
+    "gas_properties",
+    "filter"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Arka EKF engine configuration",
+  "description": "Supply measured/calibrated quantities. No engine data or defaults are implied. Runtime also checks map shapes, domains, physical bounds and covariance definiteness."
+}
